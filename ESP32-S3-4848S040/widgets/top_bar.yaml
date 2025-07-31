@@ -1,0 +1,76 @@
+lvgl:
+  top_layer:
+    widgets:
+      - obj:
+          id: top_bar
+          y: 20
+          width: 440
+          height: 60
+          align: TOP_MID
+          pad_all: 0
+          bg_color: color_steel_blue
+          bg_opa: 20%
+          border_opa: TRANSP
+          border_width: 0
+          shadow_opa: TRANSP
+          radius: 10
+          widgets:
+            - label:
+                id: display_time
+                x: 20
+                align: LEFT_MID
+                text_font: roboto_24
+                text_color: color_misty_blue
+                text: "00:00"
+            - label:
+                id: temperature_icon
+                align: RIGHT_MID
+                x: -20
+                text: "${mdi_icon_thermometer}"
+                text_color: color_blue
+                text_font: mdi_icons_24
+            - label:
+                id: temperature_value
+                align: RIGHT_MID
+                x: -50
+                text: "0 °C"
+                text_color: color_misty_blue
+                text_font: roboto_24
+                text_align: RIGHT
+
+text_sensor:
+  - platform: homeassistant
+    id: temperature_value_state
+    entity_id: sensor.airco_room_temperature
+    on_value:
+      then:
+        - lvgl.label.update:
+            id: temperature_value
+            text: !lambda |-
+              if (x == "unknown") {
+                return "0 °C";
+              }
+              return x + " °C";
+
+time:
+  - platform: sntp
+    id: sntp_time
+    timezone: Europe/Amsterdam
+    on_time_sync:
+      - script.execute: time_update
+    on_time:
+      - minutes: "*"
+        seconds: 0
+        then:
+          - script.execute: time_update
+
+script:
+  - id: time_update
+    then:
+      - lvgl.label.update:
+          id: display_time
+          text: !lambda |-
+            static char time_buf[16];
+            auto now = id(sntp_time).now();
+            snprintf(time_buf, sizeof(time_buf), "%02d:%02d", now.hour, now.minute);
+            return time_buf;

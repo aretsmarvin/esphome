@@ -1,0 +1,139 @@
+substitutions:
+  light1_entity: "light.woonkamerlampen"
+  light2_entity: "light.keukenlampen"
+  light3_entity: "light.slaapkamerlampen"
+  light4_entity: "light.opbergruimtelampen"
+
+  light1_widget_name: "light1"
+  light2_widget_name: "light2"
+  light3_widget_name: "light3"
+  light4_widget_name: "light4"
+
+  light1_label_name_1: "Woonkamer"
+  light2_label_name_1: "Keuken"
+  light3_label_name_1: "Slaapkamer"
+  light4_label_name_1: "Opbergruimte"
+
+packages:
+  light1: !include
+    file: ../states/light.yaml
+    vars:
+      widget_name: ${light1_widget_name}
+      light_entity: ${light1_entity}
+  light2: !include
+    file: ../states/light.yaml
+    vars:
+      widget_name: ${light2_widget_name}
+      light_entity: ${light2_entity}
+  light3: !include
+    file: ../states/light.yaml
+    vars:
+      widget_name: ${light3_widget_name}
+      light_entity: ${light3_entity}
+  light4: !include
+    file: ../states/light.yaml
+    vars:
+      widget_name: ${light4_widget_name}
+      light_entity: ${light4_entity}
+
+lvgl:
+  pages:
+    - id: lights_page
+      bg_color: color_slate_blue_gray
+      widgets:
+        - button:
+            id: ${light1_widget_name}_btn
+            x: 20
+            y: 100
+            width: 210
+            height: 120
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: ${light1_widget_name}_light_on
+                  align: BOTTOM_MID
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_84
+                  text: "${mdi_icon_ceiling_light}"
+              - label:
+                  id: ${light1_widget_name}_label_name
+                  align: TOP_MID
+                  text_font: roboto_16
+                  text_color: color_misty_blue
+                  text: "${light1_label_name_1}"
+        - button:
+            id: ${light2_widget_name}_btn
+            x: 250
+            y: 100
+            width: 210
+            height: 120
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: ${light2_widget_name}_light_on
+                  align: BOTTOM_MID
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_84
+                  text: "${mdi_icon_lightbulb}"
+              - label:
+                  id: ${light2_widget_name}_label_name
+                  align: TOP_MID
+                  text_font: roboto_16
+                  text_color: color_misty_blue
+                  text: "${light2_label_name_1}"
+        - button:
+            id: ${light3_widget_name}_btn
+            x: 20
+            y: 240
+            width: 210
+            height: 120
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: ${light3_widget_name}_light_on
+                  align: BOTTOM_MID
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_84
+                  text: "${mdi_icon_ceiling_light}"
+              - label:
+                  id: ${light3_widget_name}_label_name
+                  align: TOP_MID
+                  text_font: roboto_16
+                  text_color: color_misty_blue
+                  text: "${light3_label_name_1}"
+        - button:
+            id: ${light4_widget_name}_btn
+            x: 250
+            y: 240
+            width: 210
+            height: 120
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: ${light4_widget_name}_light_on
+                  align: BOTTOM_MID
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_84
+                  text: "${mdi_icon_ceiling_light}"
+              - label:
+                  id: ${light4_widget_name}_label_name
+                  align: TOP_MID
+                  text_font: roboto_16
+                  text_color: color_misty_blue
+                  text: "${light4_label_name_1}"

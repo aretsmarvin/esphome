@@ -1,0 +1,510 @@
+substitutions:
+  air_conditioner_entity: "climate.airco"
+
+lvgl:
+  pages:
+    - id: airco_page
+      bg_color: color_slate_blue_gray
+      widgets:
+        - button:
+            id: airco_cool_btn
+            x: 20
+            y: 100
+            width: 133
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_cool_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_snowflake}"
+        - button:
+            id: airco_off_btn
+            x: 20
+            y: 193
+            width: 133
+            height: 74
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_off_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_power}"
+        - button:
+            id: airco_heat_btn
+            x: 20
+            y: 286
+            width: 133
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_heat_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_fire}"
+
+        - obj:
+            id: air_conditioner_bg_main
+            width: 160
+            height: 300
+            y: 80
+            align: TOP_RIGHT
+            pad_all: 0
+            bg_opa: TRANSP
+            scrollable: false
+            border_opa: TRANSP
+            border_width: 0
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - obj:
+                  id: air_conditioner_bg_placeholder
+                  radius: 150
+                  x: 125
+                  width: 300
+                  height: 300
+                  align: RIGHT_MID
+                  bg_color: color_slate_blue_gray
+                  pad_all: 0
+                  border_opa: TRANSP
+                  border_width: 0
+                  shadow_opa: TRANSP
+
+              - obj:
+                  id: air_conditioner_temp_arc_bg
+                  radius: 130
+                  x: 120
+                  width: 260
+                  height: 260
+                  align: RIGHT_MID
+                  bg_color: color_sky_blue
+                  pad_all: 0
+                  border_opa: TRANSP
+                  border_width: 0
+                  shadow_opa: TRANSP
+
+              - meter:
+                  id: air_conditioner_meter
+                  x: 100
+                  height: 220
+                  width: 220
+                  border_width: 0
+                  bg_color: color_slate_blue_gray
+                  align: RIGHT_MID
+                  text_color: color_steel_blue
+                  scales:
+                    - range_from: 15
+                      range_to: 30
+                      angle_range: 160
+                      rotation: 100.0
+                      ticks:
+                        width: 1
+                        count: 21
+                        length: 10
+                        color: color_white
+                        major:
+                          stride: 5
+                          width: 5
+                          length: 15
+                          color: color_white
+                          label_gap: 15
+                      indicators:
+                        - tick_style:
+                            start_value: 15
+                            end_value: 30
+                            color_start: 0x000080
+                            color_end: 0x99CCFF
+                            width: 1
+
+              - arc:
+                  id: air_conditioner_arc_main
+                  align: RIGHT_MID
+                  arc_width: 20
+                  x: 125
+                  width: 270
+                  height: 270
+                  min_value: 15
+                  max_value: 30
+                  adjustable: true
+                  adv_hittest: true
+                  rotation: 90.0
+                  start_angle: 10
+                  end_angle: 170
+                  arc_opa: TRANSP
+                  indicator:
+                    arc_opa: TRANSP
+                    arc_width: 30
+                  knob:
+                    border_color: color_white
+                    border_width: 5
+                    bg_opa: TRANSP
+                  on_release:
+                    - homeassistant.service:
+                        service: climate.set_temperature
+                        data:
+                          entity_id: "${air_conditioner_entity}"
+                          temperature: !lambda return x;
+
+              - arc:
+                  id: air_conditioner_arc_current_temp
+                  clickable: false
+                  align: RIGHT_MID
+                  arc_width: 10
+                  x: 125
+                  width: 260
+                  height: 260
+                  min_value: 15
+                  max_value: 30
+                  adjustable: true
+                  adv_hittest: true
+                  rotation: 90.0
+                  start_angle: 10
+                  end_angle: 170
+                  arc_opa: TRANSP
+                  indicator:
+                    arc_opa: TRANSP
+                  knob:
+                    bg_color: color_white
+                    border_width: 0
+                    border_opa: TRANSP
+
+              # - arc:
+              #     id: air_conditioner_arc_current_temp
+              #     clickable: false
+              #     align: RIGHT_MID
+              #     arc_width: 10
+              #     x: 230
+              #     width: 450
+              #     height: 450
+              #     min_value: 10
+              #     max_value: 30
+              #     adjustable: true
+              #     adv_hittest: true
+              #     rotation: 90.0
+              #     start_angle: 10
+              #     end_angle: 170
+              #     arc_opa: TRANSP
+              #     indicator:
+              #       arc_opa: TRANSP
+              #     knob:
+              #       bg_color: color_white
+              #       border_width: 0
+              #       border_opa: TRANSP
+
+              # - obj:
+              #     width: 140
+              #     height: 120
+              #     align: RIGHT_MID
+              #     bg_color: color_slate_blue_gray
+              #     pad_all: 0
+              #     border_opa: TRANSP
+              #     border_width: 0
+              #     shadow_opa: TRANSP
+              #     widgets:
+              #       - label:
+              #           id: air_conditioner_target_temperature_whole
+              #           x: -40
+              #           y: 0
+              #           align: RIGHT_MID
+              #           text_font: nunito_84
+              #           text_color: color_steel_blue
+              #           text: " "
+
+              #       - label:
+              #           id: air_conditioner_target_temperature_fraction
+              #           x: -10
+              #           y: 15
+              #           align: RIGHT_MID
+              #           text_font: nunito_36
+              #           text_color: color_steel_blue
+              #           text: " "
+
+              #       - label:
+              #           id: air_conditioner_target_temperature_measurement
+              #           x: -12
+              #           y: -20
+              #           align: RIGHT_MID
+              #           text_font: nunito_30
+              #           text_color: color_steel_blue
+              #           text: "°C"
+
+              # - label:
+              #     id: air_conditioner_state_icon
+              #     x: -10
+              #     y: -85
+              #     align: RIGHT_MID
+              #     text_font: icons_48
+              #     text_color: color_steel_blue
+              #     text: "${air_conditioner_icon}"
+
+              # - label:
+              #     id: air_conditioner_target_temperature_icon
+              #     x: -70
+              #     y: 80
+              #     align: RIGHT_MID
+              #     text_font: icons_28
+              #     text_color: color_steel_blue
+              #     text: "${temperature_icon}"
+
+              # - label:
+              #     id: air_conditioner_target_temperature_value
+              #     x: -10
+              #     y: 80
+              #     align: RIGHT_MID
+              #     text_font: nunito_30
+              #     text_color: color_steel_blue
+              #     text: " "
+
+        # - button:
+        #     id: airco_temp_up_btn
+        #     x: 173
+        #     y: 100
+        #     width: 134
+        #     height: 73
+        #     align: TOP_LEFT
+        #     bg_color: color_steel_blue
+        #     bg_opa: 20%
+        #     shadow_opa: TRANSP
+        #     radius: 10
+        #     widgets:
+        #       - label:
+        #           id: airco_temp_up_btn_label
+        #           align: CENTER
+        #           text_color: color_steel_blue
+        #           text_font: mdi_icons_52
+        #           text: "${mdi_icon_plus_thick}"
+        # - obj:
+        #     id: airco_temp_value
+        #     x: 173
+        #     y: 193
+        #     width: 134
+        #     height: 74
+        #     align: TOP_LEFT
+        #     bg_color: color_steel_blue
+        #     bg_opa: 20%
+        #     shadow_opa: TRANSP
+        #     radius: 10
+        #     widgets:
+        #       - label:
+        #           id: airco_temp_value_label
+        #           align: CENTER
+        #           text_color: color_steel_blue
+        #           text_font: roboto_52
+        #           text: "0 °C"
+        # - button:
+        #     id: airco_temp_down_btn
+        #     x: 327
+        #     y: 286
+        #     width: 133
+        #     height: 73
+        #     align: TOP_LEFT
+        #     bg_color: color_steel_blue
+        #     bg_opa: 20%
+        #     shadow_opa: TRANSP
+        #     radius: 10
+        #     widgets:
+        #       - label:
+        #           id: airco_temp_down_btn_label
+        #           align: CENTER
+        #           text_color: color_steel_blue
+        #           text_font: mdi_icons_52
+        #           text: "${mdi_icon_minus_thick}"
+
+        # - button:
+        #     id: airco_fan_up_btn
+        #     x: 327
+        #     y: 100
+        #     width: 133
+        #     height: 73
+        #     align: TOP_LEFT
+        #     bg_color: color_steel_blue
+        #     bg_opa: 20%
+        #     shadow_opa: TRANSP
+        #     radius: 10
+        #     widgets:
+        #       - label:
+        #           id: airco_fan_up_btn_label
+        #           align: CENTER
+        #           text_color: color_steel_blue
+        #           text_font: mdi_icons_52
+        #           text: "${mdi_icon_plus_thick}"
+        # - obj:
+        #     id: airco_fan_value
+        #     x: 327
+        #     y: 193
+        #     width: 133
+        #     height: 74
+        #     align: TOP_LEFT
+        #     bg_color: color_steel_blue
+        #     bg_opa: 20%
+        #     shadow_opa: TRANSP
+        #     radius: 10
+        #     widgets:
+        #       - label:
+        #           id: airco_fan_value_label
+        #           align: CENTER
+        #           text_color: color_steel_blue
+        #           text_font: roboto_52
+        #           text: "Auto"
+        # - button:
+        #     id: airco_fan_down_btn
+        #     x: 173
+        #     y: 286
+        #     width: 134
+        #     height: 73
+        #     align: TOP_LEFT
+        #     bg_color: color_steel_blue
+        #     bg_opa: 20%
+        #     shadow_opa: TRANSP
+        #     radius: 10
+        #     widgets:
+        #       - label:
+        #           id: airco_fan_down_btn_label
+        #           align: CENTER
+        #           text_color: color_steel_blue
+        #           text_font: mdi_icons_52
+        #           text: "${mdi_icon_minus_thick}"
+text_sensor:
+  #   - platform: homeassistant
+  #     id: airco_state
+  #     entity_id: "${air_conditioner_entity}"
+  #     on_value:
+  #       then:
+  #         - if:
+  #             condition:
+  #               - lambda: 'return x == "cool";'
+  #             then:
+  #               - lvgl.label.update:
+  #                   id: airco_cool_btn_label
+  #                   text_color: color_blue
+  #             else:
+  #               - lvgl.label.update:
+  #                   id: airco_cool_btn_label
+  #                   text_color: color_steel_blue
+  #         - if:
+  #             condition:
+  #               - lambda: 'return x == "heat";'
+  #             then:
+  #               - lvgl.label.update:
+  #                   id: airco_heat_btn_label
+  #                   text_color: color_red
+  #             else:
+  #               - lvgl.label.update:
+  #                   id: airco_heat_btn_label
+  #                   text_color: color_steel_blue
+  #         - if:
+  #             condition:
+  #               - lambda: 'return x == "off" || x == "unknown";'
+  #             then:
+  #               - lvgl.label.update:
+  #                   id: airco_temp_up_btn_label
+  #                   text_color: color_steel_blue
+  #               - lvgl.label.update:
+  #                   id: airco_fan_up_btn_label
+  #                   text_color: color_steel_blue
+  #               - lvgl.label.update:
+  #                   id: airco_temp_down_btn_label
+  #                   text_color: color_steel_blue
+  #               - lvgl.label.update:
+  #                   id: airco_fan_down_btn_label
+  #                   text_color: color_steel_blue
+  #             else:
+  #               - lvgl.label.update:
+  #                   id: airco_temp_up_btn_label
+  #                   text_color: color_red
+  #               - lvgl.label.update:
+  #                   id: airco_fan_up_btn_label
+  #                   text_color: color_red
+  #               - lvgl.label.update:
+  #                   id: airco_temp_down_btn_label
+  #                   text_color: color_blue
+  #               - lvgl.label.update:
+  #                   id: airco_fan_down_btn_label
+  #                   text_color: color_blue
+  # - platform: homeassistant
+  #   id: airco_temperature_state
+  #   entity_id: "${air_conditioner_entity}"
+  #   attribute: temperature
+  #   on_value:
+  #     then:
+  #       - lvgl.label.update:
+  #           id: airco_temp_value_label
+  #           text: !lambda |-
+  #             if (x == "unknown") {
+  #               return "0 °C";
+  #             }
+  #             return x + " °C";
+#   - platform: homeassistant
+#     id: airco_fan_mode_state
+#     entity_id: "${air_conditioner_entity}"
+#     attribute: fan_mode
+#     on_value:
+#       then:
+#         - lvgl.label.update:
+#             id: airco_fan_value_label
+#             text: !lambda |-
+#               if (x == "unknown") {
+#                 return "Auto";
+#               }
+#               return x;
+
+# binary_sensor:
+#   - platform: lvgl
+#     id: airco_cool_btn_sensor
+#     widget: airco_cool_btn
+#     on_click:
+#       then:
+#         - homeassistant.service:
+#             service: climate.set_hvac_mode
+#             data:
+#               entity_id: climate.airco
+#               hvac_mode: cool
+#   - platform: lvgl
+#     id: airco_off_btn_sensor
+#     widget: airco_off_btn
+#     on_click:
+#       then:
+#         - homeassistant.service:
+#             service: climate.set_hvac_mode
+#             data:
+#               entity_id: climate.airco
+#               hvac_mode: "off"
+#   - platform: lvgl
+#     id: airco_heat_btn_sensor
+#     widget: airco_heat_btn
+#     on_click:
+#       then:
+#         - homeassistant.service:
+#             service: climate.set_hvac_mode
+#             data:
+#               entity_id: climate.airco
+#               hvac_mode: heat
+
+sensor:
+  - platform: homeassistant
+    id: airco_current_temperature_state
+    entity_id: "${air_conditioner_entity}"
+    attribute: current_temperature
+    on_value:
+      then:
+        - lvgl.arc.update:
+            id: air_conditioner_arc_current_temp
+            value: !lambda return x;

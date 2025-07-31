@@ -1,0 +1,12 @@
+image:
+  - file: "https://raw.githubusercontent.com/Sander0542/esphome/main/ESP32-S3-4848S040/assets/images/homeassistant.png"
+    id: ha_img
+    type: rgb565
+    resize: 400x82
+    transparency: alpha_channel
+
+  - file: "https://raw.githubusercontent.com/Sander0542/esphome/main/ESP32-S3-4848S040/assets/images/esphome.png"
+    id: esphome_img
+    type: rgb565
+    resize: 320x95
+    transparency: alpha_channel

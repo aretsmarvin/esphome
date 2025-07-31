@@ -1,0 +1,84 @@
+globals:
+  - id: ha_connected
+    type: bool
+    initial_value: "false"
+
+lvgl:
+  top_layer:
+    widgets:
+      - button:
+          id: loading_page
+          bg_color: color_slate_blue_gray
+          shadow_opa: TRANSP
+          width: 100%
+          height: 100%
+          widgets:
+            - image:
+                y: 30
+                align: TOP_MID
+                src: ha_img
+            - obj:
+                id: boot_homeassistant
+                y: 180
+                width: 300
+                height: 100
+                pad_all: 0
+                align: TOP_MID
+                bg_opa: TRANSP
+                shadow_opa: TRANSP
+                border_opa: TRANSP
+                border_width: 0
+                radius: 10
+                widgets:
+                  - label:
+                      id: boot_homeassistant_label
+                      align: LEFT_MID
+                      text_font: roboto_20
+                      text_color: color_misty_blue
+                      text: "Connecting..."
+                  - spinner:
+                      id: boot_homeassistant_spiner
+                      width: 50
+                      height: 50
+                      align: RIGHT_MID
+                      spin_time: 2s
+                      arc_length: 60deg
+                      arc_width: 5
+                      arc_color: color_steel_blue
+                      indicator:
+                        arc_color: color_misty_blue
+                        arc_width: 5
+            - image:
+                y: -30
+                align: BOTTOM_MID
+                src: esphome_img
+
+script:
+  - id: on_ha_connected
+    then:
+      - lambda: |-
+          lv_label_set_text(id(boot_homeassistant_label), "Synchronization...");
+      - delay: 2500ms
+      - lambda: |-
+          if (id(ha_connected)) {
+            lv_obj_add_flag(id(loading_page), LV_OBJ_FLAG_HIDDEN);
+          }
+  - id: on_ha_disconnected
+    then:
+      - lambda: |-
+          lv_label_set_text(id(boot_homeassistant_label), "Reconnecting...");
+      - lvgl.widget.show: loading_page
+
+api:
+  on_client_connected:
+    - lambda: |-
+        if (0 == client_info.find("Home Assistant ")) {
+          id(ha_connected) = true;
+          id(on_ha_connected).execute();
+        }
+  on_client_disconnected:
+    - lambda: |-
+        if (0 == client_info.find("Home Assistant ")) {
+          id(ha_connected) = false;
+          id(on_ha_disconnected).execute();
+        }

@@ -1,0 +1,27 @@
+binary_sensor:
+  - platform: lvgl
+    id: ${widget_name}_btn_sensor
+    widget: ${widget_name}_btn
+    on_click:
+      then:
+        - homeassistant.service:
+            service: light.toggle
+            data:
+              entity_id: ${light_entity}
+
+text_sensor:
+  - platform: homeassistant
+    id: ${widget_name}_label_state
+    entity_id: ${light_entity}
+    on_value:
+      - if:
+          condition:
+            lambda: 'return x == "on";'
+          then:
+            - lvgl.label.update:
+                id: ${widget_name}_light_on
+                text_color: color_amber
+          else:
+            - lvgl.label.update:
+                id: ${widget_name}_light_on
+                text_color: color_steel_blue
