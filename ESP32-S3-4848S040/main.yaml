@@ -1,0 +1,32 @@
+packages:
+  display: !include display.yaml
+  image: !include assets/images.yaml
+  font: !include assets/fonts.yaml
+  color: !include assets/colors.yaml
+
+esphome:
+  includes:
+    - <sstream>
+    - <algorithm>
+  platformio_options:
+    board_build.flash_mode: dio
+
+esp32:
+  board: esp32-s3-devkitc-1
+  variant: esp32s3
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+    version: 5.1.6
+    platform_version: 51.03.07
+    sdkconfig_options:
+      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: "y"
+      CONFIG_SPIRAM_TRY_ALLOCATE_WIFI_LWIP: y
+      # CONFIG_ESP32S3_DATA_CACHE_64KB: "y"
+      # CONFIG_ESP32S3_DATA_CACHE_LINE_64B: "y"
+      # CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
+      # CONFIG_SPIRAM_RODATA: y
+
+psram:
+  mode: octal
+  speed: 80MHz

@@ -1,0 +1,285 @@
+lvgl:
+  pages:
+    - id: airco_page
+      bg_color: color_slate_blue_gray
+      widgets:
+        - button:
+            id: airco_cool_btn
+            x: 20
+            y: 100
+            width: 133
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_cool_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_snowflake}"
+        - button:
+            id: airco_off_btn
+            x: 20
+            y: 193
+            width: 133
+            height: 74
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_off_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_power}"
+        - button:
+            id: airco_heat_btn
+            x: 20
+            y: 286
+            width: 133
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_heat_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_fire}"
+
+        - button:
+            id: airco_temp_up_btn
+            x: 173
+            y: 100
+            width: 134
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_temp_up_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_plus_thick}"
+        - obj:
+            id: airco_temp_value
+            x: 173
+            y: 193
+            width: 134
+            height: 74
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_temp_value_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: nunito_36
+                  text: "0 °C"
+        - button:
+            id: airco_temp_down_btn
+            x: 327
+            y: 286
+            width: 133
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_temp_down_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_minus_thick}"
+
+        - button:
+            id: airco_fan_up_btn
+            x: 327
+            y: 100
+            width: 133
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_fan_up_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_plus_thick}"
+        - obj:
+            id: airco_fan_value
+            x: 327
+            y: 193
+            width: 133
+            height: 74
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_fan_value_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: nunito_36
+                  text: "Auto"
+        - button:
+            id: airco_fan_down_btn
+            x: 173
+            y: 286
+            width: 134
+            height: 73
+            align: TOP_LEFT
+            bg_color: color_steel_blue
+            bg_opa: 20%
+            shadow_opa: TRANSP
+            radius: 10
+            widgets:
+              - label:
+                  id: airco_fan_down_btn_label
+                  align: CENTER
+                  text_color: color_steel_blue
+                  text_font: mdi_icons_52
+                  text: "${mdi_icon_minus_thick}"
+
+text_sensor:
+  - platform: homeassistant
+    id: airco_state
+    entity_id: climate.airco
+    on_value:
+      then:
+        - if:
+            condition:
+              - lambda: 'return x == "cool";'
+            then:
+              - lvgl.label.update:
+                  id: airco_cool_btn_label
+                  text_color: color_blue
+            else:
+              - lvgl.label.update:
+                  id: airco_cool_btn_label
+                  text_color: color_steel_blue
+        - if:
+            condition:
+              - lambda: 'return x == "heat";'
+            then:
+              - lvgl.label.update:
+                  id: airco_heat_btn_label
+                  text_color: color_red
+            else:
+              - lvgl.label.update:
+                  id: airco_heat_btn_label
+                  text_color: color_steel_blue
+        - if:
+            condition:
+              - lambda: 'return x == "off" || x == "unknown";'
+            then:
+              - lvgl.label.update:
+                  id: airco_temp_up_btn_label
+                  text_color: color_steel_blue
+              - lvgl.label.update:
+                  id: airco_fan_up_btn_label
+                  text_color: color_steel_blue
+              - lvgl.label.update:
+                  id: airco_temp_down_btn_label
+                  text_color: color_steel_blue
+              - lvgl.label.update:
+                  id: airco_fan_down_btn_label
+                  text_color: color_steel_blue
+            else:
+              - lvgl.label.update:
+                  id: airco_temp_up_btn_label
+                  text_color: color_red
+              - lvgl.label.update:
+                  id: airco_fan_up_btn_label
+                  text_color: color_red
+              - lvgl.label.update:
+                  id: airco_temp_down_btn_label
+                  text_color: color_blue
+              - lvgl.label.update:
+                  id: airco_fan_down_btn_label
+                  text_color: color_blue
+  - platform: homeassistant
+    id: airco_temperature_state
+    entity_id: climate.airco
+    attribute: temperature
+    on_value:
+      then:
+        - lvgl.label.update:
+            id: airco_temp_value_label
+            text: !lambda |-
+              if (x == "unknown") {
+                return "0 °C";
+              }
+              return x + " °C";
+  - platform: homeassistant
+    id: airco_fan_mode_state
+    entity_id: climate.airco
+    attribute: fan_mode
+    on_value:
+      then:
+        - lvgl.label.update:
+            id: airco_fan_value_label
+            text: !lambda |-
+              if (x == "unknown") {
+                return "Auto";
+              }
+              return x;
+
+binary_sensor:
+  - platform: lvgl
+    id: airco_cool_btn_sensor
+    widget: airco_cool_btn
+    on_click:
+      then:
+        - homeassistant.service:
+            service: climate.set_hvac_mode
+            data:
+              entity_id: climate.airco
+              hvac_mode: cool
+  - platform: lvgl
+    id: airco_off_btn_sensor
+    widget: airco_off_btn
+    on_click:
+      then:
+        - homeassistant.service:
+            service: climate.set_hvac_mode
+            data:
+              entity_id: climate.airco
+              hvac_mode: "off"
+  - platform: lvgl
+    id: airco_heat_btn_sensor
+    widget: airco_heat_btn
+    on_click:
+      then:
+        - homeassistant.service:
+            service: climate.set_hvac_mode
+            data:
+              entity_id: climate.airco
+              hvac_mode: heat

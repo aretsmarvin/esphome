@@ -1,0 +1,3 @@
+packages:
+  bottom_bar: !include widgets/bottom_bar.yaml
+  top_bar: !include widgets/top_bar.yaml

@@ -1,0 +1,150 @@
+substitutions:
+  font_roboto: "gfonts://Roboto@600"
+  font_mdi_icons: "https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/fonts/materialdesignicons-webfont.ttf"
+
+font:
+  - file: "${font_roboto}"
+    id: roboto_16
+    size: 16
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_18
+    size: 18
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_20
+    size: 20
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_30
+    size: 30
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_32
+    size: 32
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_36
+    size: 36
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_48
+    size: 48
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_52
+    size: 52
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_64
+    size: 64
+    bpp: 4
+
+  - file: "${font_roboto}"
+    id: roboto_84
+    size: 84
+    bpp: 4
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_20
+    size: 20
+    bpp: 4
+    glyphs:
+      - "\U000F050F" # thermometer
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_24
+    size: 24
+    bpp: 4
+    glyphs:
+      - "\U000F068A" # shield home
+      - "\U000F1828" # shield moon
+      - "\U000F099D" # shield lock
+      - "\U000F06BB" # shield plane
+      - "\U000F099E" # shield off
+      - "\U000F0498" # shield
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_40
+    size: 40
+    bpp: 4
+    glyphs:
+      - "\U000F068A" # shield home
+      - "\U000F1828" # shield moon
+      - "\U000F099D" # shield lock
+      - "\U000F06BB" # shield plane
+      - "\U000F099E" # shield off
+      - "\U000F0498" # shield
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_36
+    size: 36
+    bpp: 4
+    glyphs:
+      - "\U000F1253" # lightbulb-group
+      - "\U000F001B" # air-conditioner
+      - "\U000F1A6B" # roller-shade
+      - "\U000F056E" # view-dashboard
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_52
+    size: 52
+    bpp: 4
+    glyphs:
+      - "\U000F0717" # snowflake
+      - "\U000F0238" # fire
+      - "\U000F0425" # power
+      - "\U000F11EC" # plus-thick
+      - "\U000F1639" # minus-thick
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_68
+    size: 68
+    bpp: 4
+    glyphs:
+      - "\U000F068A" # shield home
+      - "\U000F1828" # shield moon
+      - "\U000F099D" # shield lock
+      - "\U000F06BB" # shield plane
+      - "\U000F099E" # shield off
+      - "\U000F0498" # shield
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_72
+    size: 72
+    bpp: 4
+    glyphs:
+      - "\U000F099D" # shield lock
+
+  - file:
+      type: web
+      url: "${font_mdi_icons}"
+    id: mdi_icons_84
+    size: 84
+    bpp: 4
+    glyphs:
+      - "\U000F0769" # ceiling-light
+      - "\U000F0335" # lightbulb
+      - "\U000F1253" # lightbulb-group

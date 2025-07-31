@@ -1,0 +1,4 @@
+lvgl:
+  pages:
+    - id: bedroom_page
+      bg_color: color_slate_blue_gray

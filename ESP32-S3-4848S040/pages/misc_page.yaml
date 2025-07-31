@@ -1,0 +1,4 @@
+lvgl:
+  pages:
+    - id: misc_page
+      bg_color: color_slate_blue_gray

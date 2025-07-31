@@ -1,0 +1,9 @@
+packages:
+  substitutions: !include substitutions.yaml
+  widgets: !include widgets.yaml
+
+  loading_page: !include pages/loading_page.yaml
+  lights_page: !include pages/lights_page.yaml
+  airco_page: !include pages/airco_page.yaml
+  bedroom_page: !include pages/bedroom_page.yaml
+  misc_page: !include pages/misc_page.yaml
