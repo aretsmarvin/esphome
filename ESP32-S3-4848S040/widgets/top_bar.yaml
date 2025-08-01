@@ -19,7 +19,7 @@ lvgl:
                 id: display_time
                 x: 20
                 align: LEFT_MID
-                text_font: roboto_20
+                text_font: roboto_30
                 text_color: color_misty_blue
                 text: "00:00"
             - label:
@@ -28,14 +28,14 @@ lvgl:
                 x: -20
                 text: "${mdi_icon_thermometer}"
                 text_color: color_blue
-                text_font: mdi_icons_20
+                text_font: mdi_icons_24
             - label:
                 id: temperature_value
                 align: RIGHT_MID
-                x: -60
+                x: -50
                 text: "0 °C"
                 text_color: color_misty_blue
-                text_font: roboto_20
+                text_font: roboto_30
                 text_align: RIGHT
 
 text_sensor:
