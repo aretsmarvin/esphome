@@ -75,7 +75,7 @@ lvgl:
               - obj:
                   id: air_conditioner_bg_placeholder
                   radius: 150
-                  x: 145
+                  x: 125
                   width: 300
                   height: 300
                   align: RIGHT_MID
@@ -87,10 +87,10 @@ lvgl:
 
               - obj:
                   id: air_conditioner_temp_arc_bg
-                  radius: 140
-                  x: 140
-                  width: 280
-                  height: 280
+                  radius: 130
+                  x: 120
+                  width: 260
+                  height: 260
                   align: RIGHT_MID
                   bg_color: color_sky_blue
                   pad_all: 0
@@ -100,15 +100,15 @@ lvgl:
 
               - meter:
                   id: air_conditioner_meter
-                  x: 120
-                  height: 240
-                  width: 240
+                  x: 100
+                  height: 220
+                  width: 220
                   border_width: 0
                   bg_color: color_slate_blue_gray
                   align: RIGHT_MID
                   text_color: color_steel_blue
                   scales:
-                    - range_from: 10
+                    - range_from: 15
                       range_to: 30
                       angle_range: 160
                       rotation: 100.0
@@ -125,7 +125,7 @@ lvgl:
                           label_gap: 15
                       indicators:
                         - tick_style:
-                            start_value: 10
+                            start_value: 15
                             end_value: 30
                             color_start: 0x000080
                             color_end: 0x99CCFF
