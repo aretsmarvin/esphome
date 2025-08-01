@@ -118,8 +118,8 @@ lvgl:
                         length: 10
                         color: color_white
                         major:
-                          stride: 4
-                          width: 4
+                          stride: 5
+                          width: 5
                           length: 15
                           color: color_white
                           label_gap: 15
@@ -131,39 +131,34 @@ lvgl:
                             color_end: 0x99CCFF
                             width: 1
 
-              # - arc:
-              #     id: air_conditioner_arc_main
-              #     align: RIGHT_MID
-              #     arc_width: 30
-              #     x: 235
-              #     width: 470
-              #     height: 470
-              #     min_value: 10
-              #     max_value: 30
-              #     adjustable: true
-              #     adv_hittest: true
-              #     rotation: 90.0
-              #     start_angle: 10
-              #     end_angle: 170
-              #     arc_opa: TRANSP
-              #     indicator:
-              #       arc_opa: TRANSP
-              #       arc_width: 40
-              #     knob:
-              #       border_color: color_white
-              #       border_width: 7
-              #       bg_opa: TRANSP
-              #     on_release:
-              #       - homeassistant.service:
-              #           service: climate.turn_on
-              #           data:
-              #             entity_id: "${air_conditioner_entity}"
-
-              #       - homeassistant.service:
-              #           service: climate.set_temperature
-              #           data:
-              #             entity_id: "${air_conditioner_entity}"
-              #             temperature: !lambda return x;
+              - arc:
+                  id: air_conditioner_arc_main
+                  align: RIGHT_MID
+                  arc_width: 20
+                  x: 125
+                  width: 280
+                  height: 280
+                  min_value: 15
+                  max_value: 30
+                  adjustable: true
+                  adv_hittest: true
+                  rotation: 90.0
+                  start_angle: 10
+                  end_angle: 170
+                  arc_opa: TRANSP
+                  indicator:
+                    arc_opa: TRANSP
+                    arc_width: 30
+                  knob:
+                    border_color: color_white
+                    border_width: 7
+                    bg_opa: TRANSP
+                  on_release:
+                    - homeassistant.service:
+                        service: climate.set_temperature
+                        data:
+                          entity_id: "${air_conditioner_entity}"
+                          temperature: !lambda return x;
 
               # - arc:
               #     id: air_conditioner_arc_current_temp
