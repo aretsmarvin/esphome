@@ -19,6 +19,11 @@ font:
     bpp: 4
 
   - file: "${font_roboto}"
+    id: roboto_24
+    size: 24
+    bpp: 4
+
+  - file: "${font_roboto}"
     id: roboto_30
     size: 30
     bpp: 4
@@ -69,12 +74,7 @@ font:
     size: 24
     bpp: 4
     glyphs:
-      - "\U000F068A" # shield home
-      - "\U000F1828" # shield moon
-      - "\U000F099D" # shield lock
-      - "\U000F06BB" # shield plane
-      - "\U000F099E" # shield off
-      - "\U000F0498" # shield
+      - "\U000F050F" # thermometer
 
   - file:
       type: web
