@@ -62,7 +62,7 @@ lvgl:
             id: air_conditioner_bg_main
             width: 200
             height: 300
-            x: 80
+            y: 80
             align: TOP_RIGHT
             pad_all: 0
             bg_opa: TRANSP
