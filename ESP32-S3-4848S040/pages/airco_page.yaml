@@ -63,7 +63,7 @@ lvgl:
             width: 200
             height: 300
             x: 80
-            align: RIGHT_TOP
+            align: TOP_RIGHT
             pad_all: 0
             bg_opa: TRANSP
             scrollable: false
