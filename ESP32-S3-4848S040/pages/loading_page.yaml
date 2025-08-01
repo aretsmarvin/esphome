@@ -33,7 +33,7 @@ lvgl:
                   - label:
                       id: boot_homeassistant_label
                       align: LEFT_MID
-                      text_font: nunito_20
+                      text_font: roboto_20
                       text_color: color_misty_blue
                       text: "Connecting..."
                   - spinner:

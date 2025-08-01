@@ -92,7 +92,7 @@ lvgl:
                   id: airco_temp_value_label
                   align: CENTER
                   text_color: color_steel_blue
-                  text_font: nunito_36
+                  text_font: roboto_20
                   text: "0 °C"
         - button:
             id: airco_temp_down_btn
@@ -147,7 +147,7 @@ lvgl:
                   id: airco_fan_value_label
                   align: CENTER
                   text_color: color_steel_blue
-                  text_font: nunito_36
+                  text_font: roboto_20
                   text: "Auto"
         - button:
             id: airco_fan_down_btn
