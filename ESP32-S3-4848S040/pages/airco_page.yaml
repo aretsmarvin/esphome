@@ -1,3 +1,6 @@
+substitutions:
+  air_conditioner_entity: "climate.airco"
+
 lvgl:
   pages:
     - id: airco_page
@@ -135,9 +138,9 @@ lvgl:
                   id: air_conditioner_arc_main
                   align: RIGHT_MID
                   arc_width: 20
-                  x: 125
-                  width: 280
-                  height: 280
+                  x: 120
+                  width: 260
+                  height: 260
                   min_value: 15
                   max_value: 30
                   adjustable: true
@@ -151,7 +154,7 @@ lvgl:
                     arc_width: 30
                   knob:
                     border_color: color_white
-                    border_width: 7
+                    border_width: 5
                     bg_opa: TRANSP
                   on_release:
                     - homeassistant.service:
@@ -359,7 +362,7 @@ lvgl:
 # text_sensor:
 #   - platform: homeassistant
 #     id: airco_state
-#     entity_id: climate.airco
+#     entity_id: "${air_conditioner_entity}"
 #     on_value:
 #       then:
 #         - if:
@@ -415,7 +418,7 @@ lvgl:
 #                   text_color: color_blue
 #   - platform: homeassistant
 #     id: airco_temperature_state
-#     entity_id: climate.airco
+#     entity_id: "${air_conditioner_entity}"
 #     attribute: temperature
 #     on_value:
 #       then:
@@ -428,7 +431,7 @@ lvgl:
 #               return x + " °C";
 #   - platform: homeassistant
 #     id: airco_fan_mode_state
-#     entity_id: climate.airco
+#     entity_id: "${air_conditioner_entity}"
 #     attribute: fan_mode
 #     on_value:
 #       then:
