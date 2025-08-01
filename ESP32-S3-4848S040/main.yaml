@@ -1,8 +1,8 @@
 packages:
   display: !include display.yaml
-  image: !include assets/images.yaml
-  font: !include assets/fonts.yaml
-  color: !include assets/colors.yaml
+  image: !include assets/image.yaml
+  font: !include assets/font.yaml
+  color: !include assets/color.yaml
 
 esphome:
   includes:
