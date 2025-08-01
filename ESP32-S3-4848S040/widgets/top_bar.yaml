@@ -19,7 +19,7 @@ lvgl:
                 id: display_time
                 x: 20
                 align: LEFT_MID
-                text_font: roboto_30
+                text_font: roboto_84
                 text_color: color_misty_blue
                 text: "00:00"
             - label:
@@ -35,7 +35,7 @@ lvgl:
                 x: -50
                 text: "0 °C"
                 text_color: color_misty_blue
-                text_font: roboto_30
+                text_font: roboto_84
                 text_align: RIGHT
 
 text_sensor:
