@@ -60,7 +60,7 @@ lvgl:
 
         - obj:
             id: air_conditioner_bg_main
-            width: 200
+            width: 160
             height: 300
             y: 80
             align: TOP_RIGHT
@@ -118,8 +118,8 @@ lvgl:
                         length: 10
                         color: color_white
                         major:
-                          stride: 5
-                          width: 5
+                          stride: 4
+                          width: 4
                           length: 15
                           color: color_white
                           label_gap: 15
