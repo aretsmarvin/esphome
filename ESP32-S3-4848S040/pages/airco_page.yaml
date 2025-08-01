@@ -168,7 +168,7 @@ lvgl:
                   clickable: false
                   align: RIGHT_MID
                   arc_width: 10
-                  x: 120
+                  x: 115
                   width: 260
                   height: 260
                   min_value: 15
