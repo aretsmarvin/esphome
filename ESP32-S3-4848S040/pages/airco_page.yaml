@@ -138,7 +138,7 @@ lvgl:
                   id: air_conditioner_arc_main
                   align: RIGHT_MID
                   arc_width: 20
-                  x: 120
+                  x: 125
                   width: 270
                   height: 270
                   min_value: 15
