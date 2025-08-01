@@ -439,22 +439,19 @@ text_sensor:
   #               - lvgl.label.update:
   #                   id: airco_fan_down_btn_label
   #                   text_color: color_blue
-  - platform: homeassistant
-    id: airco_temperature_state
-    entity_id: "${air_conditioner_entity}"
-    attribute: temperature
-    on_value:
-      then:
-        # - lvgl.label.update:
-        #     id: airco_temp_value_label
-        #     text: !lambda |-
-        #       if (x == "unknown") {
-        #         return "0 °C";
-        #       }
-        #       return x + " °C";
-        - lvgl.arc.update:
-            id: air_conditioner_arc_current_temp
-            value: !lambda return x;
+  # - platform: homeassistant
+  #   id: airco_temperature_state
+  #   entity_id: "${air_conditioner_entity}"
+  #   attribute: temperature
+  #   on_value:
+  #     then:
+  #       - lvgl.label.update:
+  #           id: airco_temp_value_label
+  #           text: !lambda |-
+  #             if (x == "unknown") {
+  #               return "0 °C";
+  #             }
+  #             return x + " °C";
 #   - platform: homeassistant
 #     id: airco_fan_mode_state
 #     entity_id: "${air_conditioner_entity}"
@@ -500,3 +497,14 @@ text_sensor:
 #             data:
 #               entity_id: climate.airco
 #               hvac_mode: heat
+
+sensor:
+  - platform: homeassistant
+    id: airco_current_temperature_state
+    entity_id: "${air_conditioner_entity}"
+    attribute: current_temperature
+    on_value:
+      then:
+        - lvgl.arc.update:
+            id: air_conditioner_arc_current_temp
+            value: !lambda return x;
