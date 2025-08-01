@@ -72,7 +72,7 @@ display:
       width: 480
       height: 480
     transform:
-      mirror_x: false
+      mirror_x: true
       mirror_y: false
     cs_pin:
       39
