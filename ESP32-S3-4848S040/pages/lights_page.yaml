@@ -2,7 +2,7 @@ substitutions:
   light1_entity: "light.woonkamerlampen"
   light2_entity: "light.keukenlampen"
   light3_entity: "light.slaapkamerlampen"
-  light4_entity: "light.trap"
+  light4_entity: "light.opbergruimtelampen"
 
   light1_widget_name: "light1"
   light2_widget_name: "light2"
@@ -12,7 +12,7 @@ substitutions:
   light1_label_name_1: "Woonkamer"
   light2_label_name_1: "Keuken"
   light3_label_name_1: "Slaapkamer"
-  light4_label_name_1: "Trap"
+  light4_label_name_1: "Opbergruimte"
 
 packages:
   light1: !include

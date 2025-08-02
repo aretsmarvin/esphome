@@ -41,7 +41,7 @@ lvgl:
 text_sensor:
   - platform: homeassistant
     id: temperature_value_state
-    entity_id: sensor.airco_indoor_temperature
+    entity_id: sensor.airco_room_temperature
     on_value:
       then:
         - lvgl.label.update:
