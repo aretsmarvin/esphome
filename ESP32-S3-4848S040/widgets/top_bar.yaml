@@ -43,7 +43,6 @@ text_sensor:
     id: temperature_value_state
     entity_id: sensor.airco_indoor_temperature
     on_value:
-      accuracy_decimals: 1
       then:
         - lvgl.label.update:
             id: temperature_value
