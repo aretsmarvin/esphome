@@ -50,7 +50,7 @@ text_sensor:
               if (x == "unknown") {
                 return "0 °C";
               }
-              return x + " °C";
+              return parseFloat(x).toFixed(1) + " °C";
 
 time:
   - platform: sntp
