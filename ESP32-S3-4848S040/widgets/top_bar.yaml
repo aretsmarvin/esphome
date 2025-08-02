@@ -43,6 +43,8 @@ text_sensor:
     id: temperature_value_state
     entity_id: sensor.airco_indoor_temperature
     on_value:
+      filters:
+        - round: 1
       then:
         - lvgl.label.update:
             id: temperature_value
@@ -50,7 +52,7 @@ text_sensor:
               if (x == "unknown") {
                 return "0 °C";
               }
-              return parseFloat(x).toFixed(1) + " °C";
+              return x + " °C";
 
 time:
   - platform: sntp
